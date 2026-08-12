@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>kit.hanssy</title>
+
+    <meta
+        name="description"
+        content="kit.hanssy - Reloj, calendario y calculadora"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header class="app-header">
+
+            <h1>kit.hanssy</h1>
+
+            <p>
+                Reloj · Calendario · Calculadora
+            </p>
+
+        </header>
+
+
+        <!-- =========================
+             RELOJ
+        ========================== -->
+
+        <section class="clock-section">
+
+            <div class="clock">
+
+                <div class="clock-marks"></div>
+
+                <div id="hora" class="hand hour"></div>
+
+                <div id="minuto" class="hand minute"></div>
+
+                <div id="segundo" class="hand second"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+            <div
+                id="digital"
+                class="digital"
+            >
+                00:00:00
+            </div>
+
+            <div class="brand">
+                HANSSY ROY
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CALENDARIO
+        ========================== -->
+
+        <section class="calendar">
+
+            <div class="section-title">
+                CALENDARIO
+            </div>
+
+            <div class="cal-header">
+
+                <button
+                    id="prev"
+                    aria-label="Mes anterior"
+                >
+                    ◀
+                </button>
+
+                <span id="mes"></span>
+
+                <button
+                    id="next"
+                    aria-label="Mes siguiente"
+                >
+                    ▶
+                </button>
+
+            </div>
+
+
+            <div class="dias">
+
+                <b>D</b>
+                <b>L</b>
+                <b>M</b>
+                <b>X</b>
+                <b>J</b>
+                <b>V</b>
+                <b>S</b>
+
+            </div>
+
+
+            <div id="grid"></div>
+
+
+            <textarea
+                id="nota"
+                placeholder="Selecciona un día y escribe una nota..."
+            ></textarea>
+
+
+            <button id="guardar">
+                Guardar nota
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             CALCULADORA
+        ========================== -->
+
+        <section class="calculator">
+
+            <div class="section-title calculator-title">
+                CALCULADORA
+            </div>
+
+
+            <input
+                id="calc-display"
+                type="text"
+                placeholder="22 * 4"
+                autocomplete="off"
+                spellcheck="false"
+            >
+
+
+            <div class="calc-buttons">
+
+                <button data-value="7">7</button>
+                <button data-value="8">8</button>
+                <button data-value="9">9</button>
+                <button
+                    data-value="/"
+                    class="operator"
+                >
+                    ÷
+                </button>
+
+
+                <button data-value="4">4</button>
+                <button data-value="5">5</button>
+                <button data-value="6">6</button>
+                <button
+                    data-value="*"
+                    class="operator"
+                >
+                    ×
+                </button>
+
+
+                <button data-value="1">1</button>
+                <button data-value="2">2</button>
+                <button data-value="3">3</button>
+                <button
+                    data-value="-"
+                    class="operator"
+                >
+                    −
+                </button>
+
+
+                <button data-value="0">0</button>
+                <button data-value=".">.</button>
+
+                <button
+                    data-value="+"
+                    class="operator"
+                >
+                    +
+                </button>
+
+                <button
+                    id="clear"
+                    class="clear"
+                >
+                    C
+                </button>
+
+
+                <button
+                    id="calculate"
+                    class="equals"
+                >
+                    =
+                </button>
+
+            </div>
+
+
+            <div
+                id="calc-result"
+                class="calc-result"
+            >
+                Resultado
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ANIMACIÓN ESPECIAL 88
+    ========================== -->
+
+    <div
+        id="magic88"
+        class="magic88"
+    >
+
+        <div class="magic-rays"></div>
+
+        <div class="particles">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+
+        <div class="magic-content">
+
+            <div class="magic-small">
+                RESULTADO ESPECIAL
+            </div>
+
+            <div class="magic-number">
+                88
+            </div>
+
+            <div class="magic-text">
+                ¡LO CONSEGUISTE!
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
