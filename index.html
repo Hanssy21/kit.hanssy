@@ -218,6 +218,76 @@
             </div>
 
         </section>
+        <!-- =========================
+     CRONÓMETRO RELOJ DE ARENA
+========================== -->
+
+<section class="hourglass-timer">
+
+    <div class="section-title hourglass-title">
+        CRONÓMETRO
+    </div>
+
+    <div class="timer-display" id="timer-display">
+        05:00
+    </div>
+
+    <div class="hourglass">
+
+        <div class="glass-frame">
+
+            <div class="glass-top">
+                <div class="sand sand-top" id="sand-top"></div>
+            </div>
+
+            <div class="glass-neck">
+                <div class="sand-stream" id="sand-stream"></div>
+            </div>
+
+            <div class="glass-bottom">
+                <div class="sand sand-bottom" id="sand-bottom"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="timer-controls">
+
+        <div class="timer-input">
+
+            <label for="timer-minutes">
+                MINUTOS
+            </label>
+
+            <input
+                id="timer-minutes"
+                type="number"
+                min="1"
+                max="120"
+                value="5"
+            >
+
+        </div>
+
+        <button id="timer-start">
+            ▶ INICIAR
+        </button>
+
+        <button id="timer-reset">
+            ↻ REINICIAR
+        </button>
+
+    </div>
+
+    <div
+        id="timer-status"
+        class="timer-status"
+    >
+        Listo para comenzar
+    </div>
+
+</section>
 
     </main>
 
