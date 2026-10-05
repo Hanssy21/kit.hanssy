@@ -1821,3 +1821,1036 @@ body {
         letter-spacing: 3px;
     }
 }
+/* =========================================================
+   MANEKI NEKO
+========================================================= */
+
+.maneki-section {
+    grid-column: 1 / -1;
+
+    width: min(700px, 100%);
+
+    margin: 0 auto;
+
+    padding: 25px;
+
+    min-height: 650px;
+
+    text-align: center;
+
+    position: relative;
+
+    border: 3px solid #d4af37;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #050505
+        );
+
+    box-shadow:
+        0 0 25px
+            rgba(212,175,55,0.35),
+
+        inset 0 0 30px
+            rgba(212,175,55,0.05);
+}
+
+
+.maneki-title {
+    color: #d4af37;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   ESCENARIO
+========================================================= */
+
+.maneki-stage {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 540px;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,255,255,0.08),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(212,175,55,0.14),
+            transparent 50%
+        ),
+
+        #080808;
+}
+
+
+/* =========================================================
+   MARCA DE AGUA
+========================================================= */
+
+.maneki-watermark {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-18deg);
+
+    font-size:
+        clamp(55px, 13vw, 115px);
+
+    font-weight: 900;
+
+    letter-spacing: 10px;
+
+    color:
+        rgba(212,175,55,0.055);
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   GATO
+========================================================= */
+
+.maneki-neko {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 250px;
+    height: 430px;
+
+    transform:
+        translate(-50%, -43%)
+        scale(1);
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   CABEZA
+========================================================= */
+
+.cat-head {
+
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 190px;
+    height: 165px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        48%
+        48%
+        45%
+        45%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #eeeeee 55%,
+            #cfcfcf
+        );
+
+    border: 3px solid #b7b7b7;
+
+    box-shadow:
+        inset -10px -10px 20px
+            rgba(0,0,0,0.12),
+
+        0 5px 20px
+            rgba(0,0,0,0.4);
+
+    z-index: 4;
+}
+
+
+/* =========================================================
+   OREJAS
+========================================================= */
+
+.cat-ear {
+
+    position: absolute;
+
+    top: 25px;
+
+    width: 72px;
+    height: 85px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #dddddd
+        );
+
+    border:
+        3px solid #aaa;
+
+    z-index: 3;
+}
+
+
+.cat-ear-left {
+
+    left: 22px;
+
+    clip-path:
+        polygon(
+            0 100%,
+            12% 15%,
+            90% 0,
+            100% 100%
+        );
+
+    transform:
+        rotate(-8deg);
+}
+
+
+.cat-ear-right {
+
+    right: 22px;
+
+    clip-path:
+        polygon(
+            0 100%,
+            10% 0,
+            88% 15%,
+            100% 100%
+        );
+
+    transform:
+        rotate(8deg);
+}
+
+
+.ear-inner {
+
+    position: absolute;
+
+    width: 38px;
+    height: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9fae,
+            #e75c73
+        );
+
+    opacity: .85;
+
+    left: 50%;
+    top: 25px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =========================================================
+   OJOS
+========================================================= */
+
+.cat-eye {
+
+    position: absolute;
+
+    top: 58px;
+
+    width: 32px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff 0 8%,
+            #191919 10% 55%,
+            #000000 70%
+        );
+
+    border: 2px solid #222;
+
+    box-shadow:
+        0 2px 5px
+            rgba(0,0,0,.4);
+}
+
+
+.left-eye {
+    left: 38px;
+}
+
+
+.right-eye {
+    right: 38px;
+}
+
+
+.cat-eye span {
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    left: 7px;
+    top: 6px;
+}
+
+
+/* =========================================================
+   NARIZ
+========================================================= */
+
+.cat-nose {
+
+    position: absolute;
+
+    left: 50%;
+    top: 101px;
+
+    width: 13px;
+    height: 10px;
+
+    transform:
+        translateX(-50%);
+
+    background: #e88991;
+
+    border-radius:
+        50% 50% 60% 60%;
+
+    box-shadow:
+        0 1px 3px
+            rgba(0,0,0,.4);
+}
+
+
+/* =========================================================
+   BOCA
+========================================================= */
+
+.cat-mouth {
+
+    position: absolute;
+
+    left: 50%;
+    top: 113px;
+
+    width: 28px;
+    height: 17px;
+
+    transform:
+        translateX(-50%);
+
+    border-bottom:
+        3px solid #444;
+
+    border-radius: 0 0 50% 50%;
+}
+
+
+/* =========================================================
+   BIGOTES
+========================================================= */
+
+.whiskers {
+
+    position: absolute;
+
+    top: 110px;
+
+    width: 65px;
+
+    height: 40px;
+}
+
+
+.left-whiskers {
+    left: -45px;
+}
+
+
+.right-whiskers {
+    right: -45px;
+}
+
+
+.whiskers i {
+
+    position: absolute;
+
+    width: 65px;
+    height: 2px;
+
+    background: #888;
+
+    transform-origin: center;
+}
+
+
+.left-whiskers i:nth-child(1) {
+    top: 5px;
+    transform: rotate(10deg);
+}
+
+.left-whiskers i:nth-child(2) {
+    top: 17px;
+    transform: rotate(0deg);
+}
+
+.left-whiskers i:nth-child(3) {
+    top: 29px;
+    transform: rotate(-10deg);
+}
+
+
+.right-whiskers i:nth-child(1) {
+    top: 5px;
+    transform: rotate(-10deg);
+}
+
+.right-whiskers i:nth-child(2) {
+    top: 17px;
+    transform: rotate(0deg);
+}
+
+.right-whiskers i:nth-child(3) {
+    top: 29px;
+    transform: rotate(10deg);
+}
+
+
+/* =========================================================
+   CUERPO
+========================================================= */
+
+.cat-body {
+
+    position: absolute;
+
+    left: 50%;
+    top: 195px;
+
+    width: 180px;
+    height: 185px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        45%
+        45%
+        30%
+        30%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #ededed 55%,
+            #c9c9c9
+        );
+
+    border:
+        3px solid #aaa;
+
+    box-shadow:
+        inset -10px -10px 20px
+            rgba(0,0,0,.12);
+}
+
+
+/* =========================================================
+   PECHO
+========================================================= */
+
+.cat-chest {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 100px;
+    height: 115px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50% 50% 35% 35%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #ddd
+        );
+}
+
+
+/* =========================================================
+   COLLAR ROJO
+========================================================= */
+
+.cat-collar {
+
+    position: absolute;
+
+    left: 50%;
+    top: 15px;
+
+    width: 145px;
+    height: 27px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            180deg,
+            #e31d35,
+            #8c0718
+        );
+
+    border-radius: 50%;
+
+    border:
+        2px solid #7b0714;
+
+    box-shadow:
+        0 3px 5px
+            rgba(0,0,0,.4);
+}
+
+
+
+.collar-bell {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -13px;
+
+    width: 27px;
+    height: 27px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff3a0,
+            #d4af37 45%,
+            #8c6812
+        );
+
+    border:
+        2px solid #8b6914;
+
+    box-shadow:
+        0 0 8px gold;
+}
+
+
+/* =========================================================
+   MONEDA
+========================================================= */
+
+.cat-coin {
+
+    position: absolute;
+
+    left: 50%;
+    top: 68px;
+
+    width: 85px;
+    height: 85px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffe98a,
+            #d4af37 60%,
+            #8c6812
+        );
+
+    border:
+        4px solid #9b7415;
+
+    color: #7b5b0c;
+
+    font-size: 19px;
+
+    font-weight: 900;
+
+    writing-mode:
+        vertical-rl;
+
+    box-shadow:
+        0 0 12px gold,
+
+        inset 0 0 8px
+            rgba(255,255,255,.7);
+}
+
+
+/* =========================================================
+   PATAS
+========================================================= */
+
+.cat-paw {
+
+    position: absolute;
+
+    width: 55px;
+    height: 105px;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d7d7d7
+        );
+
+    border:
+        3px solid #aaa;
+
+    box-shadow:
+        0 5px 10px
+            rgba(0,0,0,.3);
+
+    z-index: 10;
+}
+
+
+.cat-paw-left {
+
+    left: -38px;
+    top: 35px;
+
+    transform:
+        rotate(15deg);
+}
+
+
+.cat-paw-right {
+
+    right: -42px;
+    top: -15px;
+
+    transform:
+        rotate(-25deg);
+
+    transform-origin:
+        50% 90%;
+
+    cursor: pointer;
+
+    transition:
+        transform .12s ease;
+}
+
+
+/* Mano */
+
+.cat-paw span {
+
+    position: absolute;
+
+    left: 50%;
+    top: 12px;
+
+    width: 25px;
+    height: 35px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #eeeeee;
+
+    box-shadow:
+        0 20px 0 -7px #aaa;
+}
+
+
+/* =========================================================
+   MOVIMIENTO DE LA PATA
+========================================================= */
+
+.cat-paw-right.waving {
+
+    animation:
+        nekoWave
+        .7s
+        ease-in-out;
+}
+
+
+@keyframes nekoWave {
+
+    0% {
+        transform: rotate(-25deg);
+    }
+
+    20% {
+        transform: rotate(20deg);
+    }
+
+    40% {
+        transform: rotate(-35deg);
+    }
+
+    60% {
+        transform: rotate(18deg);
+    }
+
+    80% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(-25deg);
+    }
+}
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+.cat-base {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 220px;
+    height: 65px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50% 50% 18px 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #d4af37,
+            #8b6914
+        );
+
+    border:
+        3px solid #6e5010;
+
+    box-shadow:
+        0 5px 15px
+            rgba(0,0,0,.6);
+}
+
+
+.base-text {
+
+    color: #5b4209;
+
+    font-size: 22px;
+
+    font-weight: 900;
+
+    padding-top: 17px;
+
+    text-shadow:
+        0 1px 1px
+            rgba(255,255,255,.4);
+}
+
+
+/* =========================================================
+   FLORES DE CEREZO
+========================================================= */
+
+.sakura-container {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 15;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+.sakura {
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #fff,
+            #ffb7d0 35%,
+            #ff6f9f 100%
+        );
+
+    border-radius:
+        50% 0 50% 50%;
+
+    transform:
+        rotate(45deg);
+
+    box-shadow:
+        0 0 8px
+        rgba(255,120,170,.8);
+
+    animation:
+        sakuraFall
+        3s
+        ease-out
+        forwards;
+}
+
+
+/* Centro de la flor */
+
+.sakura::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    left: 5px;
+    top: 5px;
+
+    border-radius: 50%;
+
+    background: #ffe6a8;
+
+    box-shadow:
+        0 0 4px #fff0b0;
+}
+
+
+/* =========================================================
+   ANIMACIÓN DE LAS FLORES
+========================================================= */
+
+@keyframes sakuraFall {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0, 0)
+            rotate(45deg)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--fall-x),
+                var(--fall-y)
+            )
+            rotate(360deg)
+            scale(.8);
+    }
+}
+/* =========================================================
+   INSTRUCCIÓN
+========================================================= */
+
+.maneki-instruction {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 12px;
+
+    transform:
+        translateX(-50%);
+
+    color: #777;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+
+.maneki-instruction span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    margin-right: 8px;
+
+    border:
+        1px solid #d4af37;
+
+    border-radius: 6px;
+
+    color: #d4af37;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 8px
+            rgba(212,175,55,.4);
+}
+
+
+/* =========================================================
+   RESPONSIVE MANEKI
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .maneki-section {
+
+        padding: 18px;
+
+        min-height: 590px;
+    }
+
+    .maneki-stage {
+
+        height: 480px;
+    }
+
+    .maneki-neko {
+
+        transform:
+            translate(-50%, -43%)
+            scale(.78);
+    }
+
+    .maneki-watermark {
+
+        font-size: 55px;
+
+        letter-spacing: 5px;
+    }
+
+    .maneki-instruction {
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .maneki-stage {
+
+        height: 450px;
+    }
+
+    .maneki-neko {
+
+        transform:
+            translate(-50%, -43%)
+            scale(.68);
+    }
+
+    .maneki-watermark {
+
+        font-size: 43px;
+    }
+}
