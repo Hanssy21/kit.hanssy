@@ -1826,6 +1826,7 @@ body {
 ========================================================= */
 
 .maneki-section {
+
     grid-column: 1 / -1;
 
     width: min(700px, 100%);
@@ -1840,7 +1841,8 @@ body {
 
     position: relative;
 
-    border: 3px solid #d4af37;
+    border:
+        3px solid #d4af37;
 
     border-radius: 20px;
 
@@ -1860,10 +1862,18 @@ body {
 }
 
 
+/* =========================================================
+   TITULO
+========================================================= */
+
 .maneki-title {
+
     color: #d4af37;
 
     margin-bottom: 5px;
+
+    text-shadow:
+        0 0 10px gold;
 }
 
 
@@ -1937,6 +1947,24 @@ body {
 
 
 /* =========================================================
+   CONTENEDOR DE FLORES
+========================================================= */
+
+.sakura-container {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 15;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
    GATO
 ========================================================= */
 
@@ -1989,9 +2017,11 @@ body {
             #cfcfcf
         );
 
-    border: 3px solid #b7b7b7;
+    border:
+        3px solid #b7b7b7;
 
     box-shadow:
+
         inset -10px -10px 20px
             rgba(0,0,0,0.12),
 
@@ -2110,7 +2140,8 @@ body {
             #000000 70%
         );
 
-    border: 2px solid #222;
+    border:
+        2px solid #222;
 
     box-shadow:
         0 2px 5px
@@ -2192,7 +2223,8 @@ body {
     border-bottom:
         3px solid #444;
 
-    border-radius: 0 0 50% 50%;
+    border-radius:
+        0 0 50% 50%;
 }
 
 
@@ -2231,39 +2263,62 @@ body {
 
     background: #888;
 
-    transform-origin: center;
+    transform-origin:
+        center;
 }
 
 
 .left-whiskers i:nth-child(1) {
+
     top: 5px;
-    transform: rotate(10deg);
+
+    transform:
+        rotate(10deg);
 }
+
 
 .left-whiskers i:nth-child(2) {
+
     top: 17px;
-    transform: rotate(0deg);
+
+    transform:
+        rotate(0deg);
 }
 
+
 .left-whiskers i:nth-child(3) {
+
     top: 29px;
-    transform: rotate(-10deg);
+
+    transform:
+        rotate(-10deg);
 }
 
 
 .right-whiskers i:nth-child(1) {
+
     top: 5px;
-    transform: rotate(-10deg);
+
+    transform:
+        rotate(-10deg);
 }
+
 
 .right-whiskers i:nth-child(2) {
+
     top: 17px;
-    transform: rotate(0deg);
+
+    transform:
+        rotate(0deg);
 }
 
+
 .right-whiskers i:nth-child(3) {
+
     top: 29px;
-    transform: rotate(10deg);
+
+    transform:
+        rotate(10deg);
 }
 
 
@@ -2337,7 +2392,7 @@ body {
 
 
 /* =========================================================
-   COLLAR ROJO
+   COLLAR
 ========================================================= */
 
 .cat-collar {
@@ -2369,7 +2424,6 @@ body {
         0 3px 5px
             rgba(0,0,0,.4);
 }
-
 
 
 .collar-bell {
@@ -2449,6 +2503,7 @@ body {
         vertical-rl;
 
     box-shadow:
+
         0 0 12px gold,
 
         inset 0 0 8px
@@ -2467,8 +2522,7 @@ body {
     width: 55px;
     height: 105px;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -2511,12 +2565,16 @@ body {
 
     cursor: pointer;
 
+    user-select: none;
+
     transition:
         transform .12s ease;
 }
 
 
-/* Mano */
+/* =========================================================
+   MANO
+========================================================= */
 
 .cat-paw span {
 
@@ -2542,42 +2600,67 @@ body {
 
 
 /* =========================================================
-   MOVIMIENTO DE LA PATA
+   ANIMACIÓN DE LA PATA
 ========================================================= */
 
 .cat-paw-right.waving {
 
     animation:
         nekoWave
-        .7s
-        ease-in-out;
+        0.7s
+        ease-in-out
+        both;
 }
 
 
 @keyframes nekoWave {
 
     0% {
-        transform: rotate(-25deg);
+
+        transform:
+            rotate(-25deg);
     }
 
-    20% {
-        transform: rotate(20deg);
+    15% {
+
+        transform:
+            rotate(20deg);
     }
 
-    40% {
-        transform: rotate(-35deg);
+    30% {
+
+        transform:
+            rotate(-35deg);
+    }
+
+    45% {
+
+        transform:
+            rotate(20deg);
     }
 
     60% {
-        transform: rotate(18deg);
+
+        transform:
+            rotate(-35deg);
     }
 
-    80% {
-        transform: rotate(-30deg);
+    75% {
+
+        transform:
+            rotate(18deg);
+    }
+
+    90% {
+
+        transform:
+            rotate(-30deg);
     }
 
     100% {
-        transform: rotate(-25deg);
+
+        transform:
+            rotate(-25deg);
     }
 }
 
@@ -2638,20 +2721,6 @@ body {
    FLORES DE CEREZO
 ========================================================= */
 
-.sakura-container {
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 15;
-
-    pointer-events: none;
-
-    overflow: hidden;
-}
-
-
 .sakura {
 
     position: absolute;
@@ -2662,7 +2731,7 @@ body {
     background:
         radial-gradient(
             circle at 30% 30%,
-            #fff,
+            #ffffff,
             #ffb7d0 35%,
             #ff6f9f 100%
         );
@@ -2685,7 +2754,9 @@ body {
 }
 
 
-/* Centro de la flor */
+/* =========================================================
+   CENTRO DE LA FLOR
+========================================================= */
 
 .sakura::after {
 
@@ -2701,15 +2772,17 @@ body {
 
     border-radius: 50%;
 
-    background: #ffe6a8;
+    background:
+        #ffe6a8;
 
     box-shadow:
-        0 0 4px #fff0b0;
+        0 0 4px
+            #fff0b0;
 }
 
 
 /* =========================================================
-   ANIMACIÓN DE LAS FLORES
+   CAÍDA DE LAS FLORES
 ========================================================= */
 
 @keyframes sakuraFall {
@@ -2727,6 +2800,11 @@ body {
     15% {
 
         opacity: 1;
+
+        transform:
+            translate(0, 0)
+            rotate(45deg)
+            scale(1);
     }
 
     100% {
@@ -2742,6 +2820,8 @@ body {
             scale(.8);
     }
 }
+
+
 /* =========================================================
    INSTRUCCIÓN
 ========================================================= */
@@ -2807,10 +2887,12 @@ body {
         min-height: 590px;
     }
 
+
     .maneki-stage {
 
         height: 480px;
     }
+
 
     .maneki-neko {
 
@@ -2819,12 +2901,14 @@ body {
             scale(.78);
     }
 
+
     .maneki-watermark {
 
         font-size: 55px;
 
         letter-spacing: 5px;
     }
+
 
     .maneki-instruction {
 
@@ -2842,12 +2926,14 @@ body {
         height: 450px;
     }
 
+
     .maneki-neko {
 
         transform:
             translate(-50%, -43%)
             scale(.68);
     }
+
 
     .maneki-watermark {
 

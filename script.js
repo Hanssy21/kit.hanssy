@@ -1239,174 +1239,312 @@ timerMinutes.addEventListener(
 */
 
 prepararNuevoTimer();
-/* =========================================================
+/*/* =========================================================
    MANEKI NEKO
    Pata móvil + tecla 8 + flores de cerezo
 ========================================================= */
 
-const manekiStage =
-    document.getElementById("maneki-stage");
-
-const manekiPaw =
-    document.getElementById("maneki-paw");
-
-const sakuraContainer =
-    document.getElementById("sakura-container");
-
-
-/* =========================================================
-   MOVER LA PATA
-========================================================= */
-
-function moverPataManeki() {
-
-    /*
-        Reiniciar animación.
-    */
-
-    manekiPaw.classList.remove("waving");
-
-    void manekiPaw.offsetWidth;
-
-    manekiPaw.classList.add("waving");
-
-
-    /*
-        Crear flores de cerezo.
-    */
-
-    crearFloresSakura();
-}
-
-
-/* =========================================================
-   FLORES DE CEREZO
-========================================================= */
-
-function crearFloresSakura() {
-
-    /*
-        Crear varias flores.
-    */
-
-    for (let i = 0; i < 8; i++) {
-
-        const flor =
-            document.createElement("div");
-
-        flor.className =
-            "sakura";
-
-        /*
-            Posición aleatoria
-            alrededor del gato.
-        */
-
-        const x =
-            15 + Math.random() * 70;
-
-        const delay =
-            Math.random() * 0.4;
-
-        const duracion =
-            2.5 + Math.random() * 2;
-
-
-        flor.style.left =
-            `${x}%`;
-
-        flor.style.top =
-            `${10 + Math.random() * 25}%`;
-
-        flor.style.animationDelay =
-            `${delay}s`;
-
-        flor.style.animationDuration =
-            `${duracion}s`;
-        
-        /* Dirección de caída */
-
-        flor.style.setProperty(
-          "--fall-x",
-            `${-80 + Math.random() * 160}px`
-              );
-
-flor.style.setProperty(
-    "--fall-y",
-    `${180 + Math.random() * 180}px`
-);
-
-
-
-        /*
-            Tamaño ligeramente diferente.
-        */
-
-        const tamaño =
-            10 + Math.random() * 8;
-
-        flor.style.width =
-            `${tamaño}px`;
-
-        flor.style.height =
-            `${tamaño}px`;
-
-
-        sakuraContainer.appendChild(
-            flor
-        );
-
-
-        /*
-            Eliminar la flor después
-            de terminar la animación.
-        */
-
-        setTimeout(
-            () => {
-
-                flor.remove();
-
-            },
-            4500
-        );
-    }
-}
-
-
-/* =========================================================
-   TECLA 8
-========================================================= */
-
 document.addEventListener(
-    "keydown",
-    event => {
-
-        /*
-            Tecla superior "8"
-            o teclado numérico.
-        */
-
-        if (
-            event.key === "8" ||
-            event.code === "Numpad8"
-        ) {
-
-            moverPataManeki();
-        }
-    }
-);
-
-
-/* =========================================================
-   CLICK EN LA PATA
-========================================================= */
-
-manekiPaw.addEventListener(
-    "click",
+    "DOMContentLoaded",
     () => {
 
-        moverPataManeki();
+        /* =====================================================
+           ELEMENTOS
+        ===================================================== */
+
+        const manekiStage =
+            document.getElementById(
+                "maneki-stage"
+            );
+
+        const manekiPaw =
+            document.getElementById(
+                "maneki-paw"
+            );
+
+        const sakuraContainer =
+            document.getElementById(
+                "sakura-container"
+            );
+
+
+        /* =====================================================
+           COMPROBAR ELEMENTOS
+        ===================================================== */
+
+        if (!manekiPaw) {
+
+            console.error(
+                "Maneki Neko: no se encontró #maneki-paw"
+            );
+
+            return;
+        }
+
+
+        if (!sakuraContainer) {
+
+            console.error(
+                "Maneki Neko: no se encontró #sakura-container"
+            );
+        }
+
+
+        /* =====================================================
+           MOVER PATA
+        ===================================================== */
+
+        function moverPataManeki() {
+
+            /*
+                Reiniciar animación.
+            */
+
+            manekiPaw.classList.remove(
+                "waving"
+            );
+
+
+            /*
+                Forzar al navegador a
+                reiniciar la animación.
+            */
+
+            void manekiPaw.offsetWidth;
+
+
+            /*
+                Activar animación.
+            */
+
+            manekiPaw.classList.add(
+                "waving"
+            );
+
+
+            /*
+                Crear flores.
+            */
+
+            crearFloresSakura();
+        }
+
+
+        /* =====================================================
+           CREAR FLORES DE CEREZO
+        ===================================================== */
+
+        function crearFloresSakura() {
+
+            if (!sakuraContainer) {
+                return;
+            }
+
+
+            /*
+                Crear 8 flores.
+            */
+
+            for (
+                let i = 0;
+                i < 8;
+                i++
+            ) {
+
+                const flor =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                flor.className =
+                    "sakura";
+
+
+                /*
+                    Posición horizontal.
+                */
+
+                const x =
+                    10 +
+                    Math.random() * 80;
+
+
+                /*
+                    Posición vertical.
+                */
+
+                const y =
+                    5 +
+                    Math.random() * 30;
+
+
+                flor.style.left =
+                    `${x}%`;
+
+                flor.style.top =
+                    `${y}%`;
+
+
+                /*
+                    Dirección de caída.
+                */
+
+                const fallX =
+                    -100 +
+                    Math.random() * 200;
+
+
+                const fallY =
+                    180 +
+                    Math.random() * 220;
+
+
+                flor.style.setProperty(
+                    "--fall-x",
+                    `${fallX}px`
+                );
+
+
+                flor.style.setProperty(
+                    "--fall-y",
+                    `${fallY}px`
+                );
+
+
+                /*
+                    Retraso aleatorio.
+                */
+
+                const delay =
+                    Math.random() * 0.4;
+
+
+                flor.style.animationDelay =
+                    `${delay}s`;
+
+
+                /*
+                    Duración aleatoria.
+                */
+
+                const duracion =
+                    2.5 +
+                    Math.random() * 1.5;
+
+
+                flor.style.animationDuration =
+                    `${duracion}s`;
+
+
+                /*
+                    Tamaño aleatorio.
+                */
+
+                const tamaño =
+                    10 +
+                    Math.random() * 9;
+
+
+                flor.style.width =
+                    `${tamaño}px`;
+
+
+                flor.style.height =
+                    `${tamaño}px`;
+
+
+                /*
+                    Añadir al escenario.
+                */
+
+                sakuraContainer.appendChild(
+                    flor
+                );
+
+
+                /*
+                    Eliminar después
+                    de terminar.
+                */
+
+                setTimeout(
+                    () => {
+
+                        flor.remove();
+
+                    },
+                    4500
+                );
+            }
+        }
+
+
+        /* =====================================================
+           CLICK EN LA PATA
+        ===================================================== */
+
+        manekiPaw.addEventListener(
+            "click",
+            () => {
+
+                moverPataManeki();
+
+            }
+        );
+
+
+        /* =====================================================
+           TECLA 8
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                /*
+                    8 del teclado normal.
+                */
+
+                if (
+                    event.key === "8"
+                ) {
+
+                    moverPataManeki();
+
+                    return;
+                }
+
+
+                /*
+                    8 del teclado numérico.
+                */
+
+                if (
+                    event.code === "Numpad8"
+                ) {
+
+                    moverPataManeki();
+                }
+            }
+        );
+
+
+        /* =====================================================
+           HACER LA PATA CLICKEABLE
+        ===================================================== */
+
+        manekiPaw.style.cursor =
+            "pointer";
+
+
+        /* =====================================================
+           PRUEBA
+        ===================================================== */
+
+        console.log(
+            "Maneki Neko funcionando correctamente"
+        );
 
     }
 );
