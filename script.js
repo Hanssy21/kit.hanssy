@@ -1480,71 +1480,77 @@ document.addEventListener(
         }
 
 
-        /* =====================================================
-           CLICK EN LA PATA
-        ===================================================== */
+   /* =====================================================
+   CLICK EN EL GATO
+   La tecla 8 sigue funcionando
+===================================================== */
 
-        manekiPaw.addEventListener(
-            "click",
-            () => {
+const manekiNeko =
+    document.querySelector(
+        ".maneki-neko"
+    );
 
-                moverPataManeki();
+if (manekiNeko) {
 
-            }
-        );
+    manekiNeko.style.cursor = "pointer";
 
+    manekiNeko.addEventListener(
+        "click",
+        () => {
 
-        /* =====================================================
-           TECLA 8
-        ===================================================== */
+            moverPataManeki();
 
-        document.addEventListener(
-            "keydown",
-            event => {
+        }
+    );
 
-                /*
-                    8 del teclado normal.
-                */
-
-                if (
-                    event.key === "8"
-                ) {
-
-                    moverPataManeki();
-
-                    return;
-                }
+}
 
 
-                /*
-                    8 del teclado numérico.
-                */
+/* =====================================================
+   TECLA 8
+===================================================== */
 
-                if (
-                    event.code === "Numpad8"
-                ) {
+document.addEventListener(
+    "keydown",
+    event => {
 
-                    moverPataManeki();
-                }
-            }
-        );
+        /*
+            8 del teclado normal.
+        */
+
+        if (
+            event.key === "8"
+        ) {
+
+            moverPataManeki();
+
+            return;
+        }
 
 
-        /* =====================================================
-           HACER LA PATA CLICKEABLE
-        ===================================================== */
+        /*
+            8 del teclado numérico.
+        */
 
-        manekiPaw.style.cursor =
-            "pointer";
+        if (
+            event.code === "Numpad8"
+        ) {
+
+            moverPataManeki();
+
+        }
+
+    }
+);
 
 
-        /* =====================================================
-           PRUEBA
-        ===================================================== */
+/* =====================================================
+   PRUEBA
+===================================================== */
 
-        console.log(
-            "Maneki Neko funcionando correctamente"
-        );
+console.log(
+    "Maneki Neko funcionando correctamente"
+);
 
     }
 );
