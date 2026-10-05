@@ -1480,30 +1480,43 @@ document.addEventListener(
         }
 
 
-   /* =====================================================
-   CLICK EN EL GATO
-   La tecla 8 sigue funcionando
+  /* =====================================================
+   CLICK / TOQUE EN EL GATO
+   PC + CELULAR
 ===================================================== */
 
 const manekiNeko =
-    document.querySelector(
-        ".maneki-neko"
-    );
+    document.querySelector(".maneki-neko");
 
 if (manekiNeko) {
 
     manekiNeko.style.cursor = "pointer";
 
-    manekiNeko.addEventListener(
-        "click",
-        () => {
+}
+
+
+/*
+    pointerup funciona con:
+
+    🖱️ Mouse
+    👆 Pantalla táctil
+    🖊️ Lápiz táctil
+*/
+
+document.addEventListener(
+    "pointerup",
+    event => {
+
+        if (
+            event.target.closest(".maneki-neko")
+        ) {
 
             moverPataManeki();
 
         }
-    );
 
-}
+    }
+);
 
 
 /* =====================================================
