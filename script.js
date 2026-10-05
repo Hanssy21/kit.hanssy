@@ -1443,7 +1443,7 @@ document.addEventListener(
 
                 const tamaño =
                     10 +
-                    Math.random() * 9;
+                    Math.random() * 12;
 
 
                 flor.style.width =
