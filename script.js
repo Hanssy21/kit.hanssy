@@ -1567,3 +1567,737 @@ console.log(
 
     }
 );
+/* =========================================================
+   JUEGO DE DADOS
+   2 dados + jugadores + turnos + ranking
+========================================================= */
+
+const diceGame =
+    document.getElementById("dice-game");
+
+if (diceGame) {
+
+    const dicePlayerName =
+        document.getElementById(
+            "dice-player-name"
+        );
+
+    const diceAddPlayer =
+        document.getElementById(
+            "dice-add-player"
+        );
+
+    const diceRoll =
+        document.getElementById(
+            "dice-roll"
+        );
+
+    const diceNextTurn =
+        document.getElementById(
+            "dice-next-turn"
+        );
+
+    const diceNewGame =
+        document.getElementById(
+            "dice-new-game"
+        );
+
+    const diceOne =
+        document.getElementById(
+            "dice-one"
+        );
+
+    const diceTwo =
+        document.getElementById(
+            "dice-two"
+        );
+
+    const diceCurrentPlayer =
+        document.getElementById(
+            "dice-current-player"
+        );
+
+    const diceRoundResult =
+        document.getElementById(
+            "dice-round-result"
+        );
+
+    const diceMessage =
+        document.getElementById(
+            "dice-message"
+        );
+
+    const diceTotalScore =
+        document.getElementById(
+            "dice-total-score"
+        );
+
+    const diceRankingList =
+        document.getElementById(
+            "dice-ranking-list"
+        );
+
+
+    /* =====================================================
+       ESTADO DEL JUEGO
+    ===================================================== */
+
+    let dicePlayers = [
+        {
+            name: "HANSSY ROY",
+            score: 0
+        }
+    ];
+
+    let diceCurrentIndex = 0;
+
+    let diceHasRolled = false;
+
+    let diceRolling = false;
+
+
+    /* =====================================================
+       VALOR INICIAL
+    ===================================================== */
+
+    let diceValueOne = 1;
+
+    let diceValueTwo = 1;
+
+
+    /* =====================================================
+       MOSTRAR PUNTOS DEL DADO
+    ===================================================== */
+
+    function mostrarDado(
+        dado,
+        valor
+    ) {
+
+        const puntos =
+            dado.querySelectorAll(
+                "span"
+            );
+
+
+        /*
+            Posiciones de los puntos.
+
+            1 = centro
+            2 = esquinas diagonales
+            etc.
+        */
+
+        const posiciones = {
+
+            1: [5],
+
+            2: [1, 9],
+
+            3: [1, 5, 9],
+
+            4: [1, 3, 7, 9],
+
+            5: [1, 3, 5, 7, 9],
+
+            6: [1, 3, 4, 6, 7, 9]
+
+        };
+
+
+        puntos.forEach(
+            punto => {
+
+                punto.style.opacity =
+                    "0";
+
+                punto.style.transform =
+                    "scale(.4)";
+            }
+        );
+
+
+        posiciones[valor]
+            .forEach(
+                posicion => {
+
+                    const punto =
+                        puntos[
+                            posicion - 1
+                        ];
+
+                    punto.style.opacity =
+                        "1";
+
+                    punto.style.transform =
+                        "scale(1)";
+                }
+            );
+    }
+
+
+    /* =====================================================
+       ACTUALIZAR JUGADOR ACTUAL
+    ===================================================== */
+
+    function actualizarJugadorActual() {
+
+        const jugador =
+            dicePlayers[
+                diceCurrentIndex
+            ];
+
+
+        if (!jugador) {
+            return;
+        }
+
+
+        diceCurrentPlayer.innerHTML =
+            `Jugador actual: <strong>${escaparTexto(jugador.name)}</strong>`;
+
+
+        diceTotalScore.textContent =
+            jugador.score;
+    }
+
+
+    /* =====================================================
+       ESCAPAR TEXTO
+       Evita insertar HTML proveniente
+       del nombre del jugador.
+    ===================================================== */
+
+    function escaparTexto(texto) {
+
+        const temporal =
+            document.createElement(
+                "div"
+            );
+
+        temporal.textContent =
+            texto;
+
+        return temporal.innerHTML;
+    }
+
+
+    /* =====================================================
+       RANKING
+    ===================================================== */
+
+    function actualizarRanking() {
+
+        diceRankingList.innerHTML =
+            "";
+
+
+        const ranking =
+            [...dicePlayers]
+                .sort(
+                    (a, b) =>
+                        b.score - a.score
+                );
+
+
+        ranking.forEach(
+            (jugador, index) => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "dice-ranking-item";
+
+
+                /*
+                    Saber si este jugador
+                    es el jugador actual.
+                */
+
+                const indiceOriginal =
+                    dicePlayers.indexOf(
+                        jugador
+                    );
+
+
+                if (
+                    indiceOriginal ===
+                    diceCurrentIndex
+                ) {
+
+                    item.classList.add(
+                        "active"
+                    );
+                }
+
+
+                const posicion =
+                    document.createElement(
+                        "span"
+                    );
+
+                posicion.className =
+                    "dice-ranking-position";
+
+                posicion.textContent =
+                    `${index + 1}º`;
+
+
+                const nombre =
+                    document.createElement(
+                        "span"
+                    );
+
+                nombre.className =
+                    "dice-ranking-name";
+
+                nombre.textContent =
+                    jugador.name;
+
+
+                const puntos =
+                    document.createElement(
+                        "span"
+                    );
+
+                puntos.className =
+                    "dice-ranking-score";
+
+                puntos.textContent =
+                    `${jugador.score} puntos`;
+
+
+                item.appendChild(
+                    posicion
+                );
+
+                item.appendChild(
+                    nombre
+                );
+
+                item.appendChild(
+                    puntos
+                );
+
+
+                diceRankingList.appendChild(
+                    item
+                );
+            }
+        );
+    }
+
+
+    /* =====================================================
+       LANZAMIENTO ALEATORIO
+    ===================================================== */
+
+    function lanzarDado() {
+
+        /*
+            Número entero entre 1 y 6.
+        */
+
+        return Math.floor(
+            Math.random() * 6
+        ) + 1;
+    }
+
+
+    /* =====================================================
+       LANZAR LOS DOS DADOS
+    ===================================================== */
+
+    function lanzarDadosJuego() {
+
+        if (diceRolling) {
+            return;
+        }
+
+
+        if (
+            dicePlayers.length === 0
+        ) {
+
+            diceMessage.textContent =
+                "Agrega al menos un jugador.";
+
+            return;
+        }
+
+
+        /*
+            Evitar lanzar dos veces
+            en el mismo turno.
+        */
+
+        if (diceHasRolled) {
+
+            diceMessage.textContent =
+                "Pulsa SIGUIENTE TURNO para continuar.";
+
+            return;
+        }
+
+
+        diceRolling = true;
+
+
+        diceOne.classList.remove(
+            "rolling"
+        );
+
+        diceTwo.classList.remove(
+            "rolling"
+        );
+
+
+        /*
+            Reiniciar animación.
+        */
+
+        void diceOne.offsetWidth;
+
+        void diceTwo.offsetWidth;
+
+
+        diceOne.classList.add(
+            "rolling"
+        );
+
+        diceTwo.classList.add(
+            "rolling"
+        );
+
+
+        /*
+            Generar resultados.
+        */
+
+        diceValueOne =
+            lanzarDado();
+
+        diceValueTwo =
+            lanzarDado();
+
+
+        const total =
+            diceValueOne +
+            diceValueTwo;
+
+
+        const jugador =
+            dicePlayers[
+                diceCurrentIndex
+            ];
+
+
+        /*
+            Mostrar dados después
+            de la pequeña animación.
+        */
+
+        setTimeout(
+            () => {
+
+                mostrarDado(
+                    diceOne,
+                    diceValueOne
+                );
+
+                mostrarDado(
+                    diceTwo,
+                    diceValueTwo
+                );
+
+
+                /*
+                    Sumar puntuación.
+                */
+
+                jugador.score +=
+                    total;
+
+
+                diceHasRolled = true;
+
+                diceRolling = false;
+
+
+                /*
+                    Resultado.
+                */
+
+                diceRoundResult.textContent =
+                    `🎲 ${diceValueOne} + ${diceValueTwo} = ${total} puntos`;
+
+
+                diceMessage.textContent =
+                    `${jugador.name} sacó ${total} puntos.`;
+
+
+                diceTotalScore.textContent =
+                    jugador.score;
+
+
+                actualizarRanking();
+
+            },
+            550
+        );
+    }
+
+
+    /* =====================================================
+       SIGUIENTE TURNO
+    ===================================================== */
+
+    function siguienteTurnoJuego() {
+
+        if (diceRolling) {
+            return;
+        }
+
+
+        if (!diceHasRolled) {
+
+            diceMessage.textContent =
+                "Primero lanza los dados.";
+
+            return;
+        }
+
+
+        /*
+            Pasar al siguiente jugador.
+        */
+
+        diceCurrentIndex =
+            (
+                diceCurrentIndex + 1
+            ) %
+            dicePlayers.length;
+
+
+        diceHasRolled = false;
+
+
+        const jugador =
+            dicePlayers[
+                diceCurrentIndex
+            ];
+
+
+        diceRoundResult.textContent =
+            "Lanza los dados";
+
+
+        diceMessage.textContent =
+            `Turno de ${jugador.name}`;
+
+
+        actualizarJugadorActual();
+
+        actualizarRanking();
+    }
+
+
+    /* =====================================================
+       AGREGAR JUGADOR
+    ===================================================== */
+
+    function agregarJugador() {
+
+        const nombre =
+            dicePlayerName.value
+                .trim();
+
+
+        if (!nombre) {
+
+            diceMessage.textContent =
+                "Escribe un nombre.";
+
+            dicePlayerName.focus();
+
+            return;
+        }
+
+
+        if (
+            dicePlayers.length >= 8
+        ) {
+
+            diceMessage.textContent =
+                "Máximo 8 jugadores.";
+
+            return;
+        }
+
+
+        /*
+            Evitar nombres duplicados.
+        */
+
+        const existe =
+            dicePlayers.some(
+                jugador =>
+                    jugador.name
+                        .toLowerCase() ===
+                    nombre.toLowerCase()
+            );
+
+
+        if (existe) {
+
+            diceMessage.textContent =
+                "Ese jugador ya existe.";
+
+            dicePlayerName.select();
+
+            return;
+        }
+
+
+        dicePlayers.push({
+            name: nombre,
+            score: 0
+        });
+
+
+        dicePlayerName.value =
+            "";
+
+
+        diceMessage.textContent =
+            `${nombre} fue agregado a la partida.`;
+
+
+        actualizarRanking();
+        actualizarJugadorActual();
+
+        dicePlayerName.focus();
+    }
+
+
+    /* =====================================================
+       NUEVA PARTIDA
+    ===================================================== */
+
+    function nuevaPartidaDados() {
+
+        dicePlayers.forEach(
+            jugador => {
+
+                jugador.score = 0;
+            }
+        );
+
+
+        diceCurrentIndex = 0;
+
+        diceHasRolled = false;
+
+        diceRolling = false;
+
+
+        diceValueOne = 1;
+
+        diceValueTwo = 1;
+
+
+        mostrarDado(
+            diceOne,
+            1
+        );
+
+        mostrarDado(
+            diceTwo,
+            1
+        );
+
+
+        diceRoundResult.textContent =
+            "Lanza los dados";
+
+
+        diceMessage.textContent =
+            "¡Nueva partida! Empieza HANSSY ROY.";
+
+
+        actualizarJugadorActual();
+
+        actualizarRanking();
+    }
+
+
+    /* =====================================================
+       EVENTOS
+    ===================================================== */
+
+    diceRoll.addEventListener(
+        "click",
+        lanzarDadosJuego
+    );
+
+
+    diceNextTurn.addEventListener(
+        "click",
+        siguienteTurnoJuego
+    );
+
+
+    diceAddPlayer.addEventListener(
+        "click",
+        agregarJugador
+    );
+
+
+    diceNewGame.addEventListener(
+        "click",
+        nuevaPartidaDados
+    );
+
+
+    /*
+        ENTER para agregar jugador.
+    */
+
+    dicePlayerName.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                agregarJugador();
+            }
+        }
+    );
+
+
+    /* =====================================================
+       INICIALIZAR
+    ===================================================== */
+
+    mostrarDado(
+        diceOne,
+        diceValueOne
+    );
+
+    mostrarDado(
+        diceTwo,
+        diceValueTwo
+    );
+
+    actualizarJugadorActual();
+
+    actualizarRanking();
+
+}

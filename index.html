@@ -218,6 +218,173 @@
             </div>
 
         </section>
+
+  <!-- =========================================================
+     JUEGO DE DADOS
+========================================================== -->
+
+<section class="dice-game" id="dice-game">
+
+    <div class="section-title dice-game-title">
+        🎲 JUEGO DE DADOS 🎲
+    </div>
+
+    <div class="dice-brand">
+        by HANSSY ROY
+    </div>
+
+    <!-- JUGADORES -->
+
+    <div class="dice-player-form">
+
+        <input
+            id="dice-player-name"
+            type="text"
+            maxlength="18"
+            placeholder="Nombre del jugador"
+            autocomplete="off"
+        >
+
+        <button
+            id="dice-add-player"
+            type="button"
+        >
+            ＋ AGREGAR JUGADOR
+        </button>
+
+    </div>
+
+
+    <!-- JUGADOR ACTUAL -->
+
+    <div
+        class="dice-current-player"
+        id="dice-current-player"
+    >
+        Jugador actual:
+        <strong>HANSSY ROY</strong>
+    </div>
+
+
+    <!-- DADOS -->
+
+    <div class="dice-area">
+
+        <div
+            class="dice"
+            id="dice-one"
+            aria-label="Dado 1"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+
+        <div
+            class="dice"
+            id="dice-two"
+            aria-label="Dado 2"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <!-- RESULTADO -->
+
+    <div
+        class="dice-round-result"
+        id="dice-round-result"
+    >
+        Lanza los dados
+    </div>
+
+
+    <div
+        class="dice-message"
+        id="dice-message"
+        aria-live="polite"
+    >
+        ¡Que empiece la partida!
+    </div>
+
+
+    <!-- CONTROLES -->
+
+    <div class="dice-controls">
+
+        <button
+            id="dice-roll"
+            type="button"
+            class="dice-roll-button"
+        >
+            🎲 LANZAR DADOS
+        </button>
+
+        <button
+            id="dice-next-turn"
+            type="button"
+            class="dice-next-button"
+        >
+            ⏭ SIGUIENTE TURNO
+        </button>
+
+        <button
+            id="dice-new-game"
+            type="button"
+            class="dice-new-button"
+        >
+            🔄 NUEVA PARTIDA
+        </button>
+
+    </div>
+
+
+    <!-- PUNTUACIÓN -->
+
+    <div class="dice-total">
+
+        PUNTUACIÓN TOTAL
+
+        <strong id="dice-total-score">
+            0
+        </strong>
+
+    </div>
+
+
+    <!-- RANKING -->
+
+    <div class="dice-ranking">
+
+        <div class="dice-ranking-title">
+            🏆 RANKING
+        </div>
+
+        <div
+            id="dice-ranking-list"
+            class="dice-ranking-list"
+        ></div>
+
+    </div>
+
+</section>
         <!-- =========================
      CRONÓMETRO RELOJ DE ARENA
 ========================== -->
