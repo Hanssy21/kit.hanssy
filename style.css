@@ -3729,3 +3729,22 @@ body {
     }
 
 }
+.dice-remove-button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid #ff4d6d;
+    border-radius: 10px;
+    background: #35101b;
+    color: #ff8fa3;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dice-remove-button:hover {
+    background: #ff4d6d;
+    color: white;
+    box-shadow: 0 0 12px #ff4d6d;
+}
