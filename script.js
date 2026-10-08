@@ -1578,19 +1578,24 @@ const diceGame =
 if (diceGame) {
 
     const dicePlayerName =
-        document.getElementById(
-            "dice-player-name"
-        );
+    document.getElementById(
+        "dice-player-name"
+    );
 
-    const diceAddPlayer =
-        document.getElementById(
-            "dice-add-player"
-        );
+const diceAddPlayer =
+    document.getElementById(
+        "dice-add-player"
+    );
 
-    const diceRoll =
-        document.getElementById(
-            "dice-roll"
-        );
+const diceRemovePlayer =
+    document.getElementById(
+        "dice-remove-player"
+    );
+
+const diceRoll =
+    document.getElementById(
+        "dice-roll"
+    );
 
     const diceNextTurn =
         document.getElementById(
@@ -1642,12 +1647,7 @@ if (diceGame) {
        ESTADO DEL JUEGO
     ===================================================== */
 
-    let dicePlayers = [
-        {
-            name: "HANSSY ROY",
-            score: 0
-        }
-    ];
+    let dicePlayers = [];
 
     let diceCurrentIndex = 0;
 
@@ -1740,26 +1740,44 @@ if (diceGame) {
        ACTUALIZAR JUGADOR ACTUAL
     ===================================================== */
 
-    function actualizarJugadorActual() {
+   function actualizarJugadorActual() {
 
-        const jugador =
-            dicePlayers[
-                diceCurrentIndex
-            ];
+    const jugador =
+        dicePlayers[
+            diceCurrentIndex
+        ];
 
+    /*
+        No hay jugadores.
+    */
 
-        if (!jugador) {
-            return;
-        }
-
+    if (!jugador) {
 
         diceCurrentPlayer.innerHTML =
-            `Jugador actual: <strong>${escaparTexto(jugador.name)}</strong>`;
-
+            `Jugador actual: <strong>Ningún jugador</strong>`;
 
         diceTotalScore.textContent =
-            jugador.score;
+            "0";
+
+        return;
     }
+
+
+    /*
+        Mostrar jugador actual.
+    */
+
+    diceCurrentPlayer.innerHTML =
+        `Jugador actual: <strong>${escaparTexto(jugador.name)}</strong>`;
+
+
+    /*
+        Mostrar puntuación.
+    */
+
+    diceTotalScore.textContent =
+        jugador.score;
+}
 
 
     /* =====================================================
@@ -2162,10 +2180,18 @@ if (diceGame) {
         }
 
 
-        dicePlayers.push({
-            name: nombre,
-            score: 0
-        });
+       const primerJugador =
+    dicePlayers.length === 0;
+
+dicePlayers.push({
+    name: nombre,
+    score: 0
+});
+
+if (primerJugador) {
+    diceCurrentIndex = 0;
+    diceHasRolled = false;
+}
 
 
         dicePlayerName.value =
@@ -2182,7 +2208,104 @@ if (diceGame) {
         dicePlayerName.focus();
     }
 
+/* =====================================================
+   ELIMINAR JUGADOR
+===================================================== */
 
+function eliminarJugador() {
+
+    /*
+        No hay jugadores.
+    */
+
+    if (dicePlayers.length === 0) {
+
+        diceMessage.textContent =
+            "No hay ningún jugador para eliminar.";
+
+        return;
+    }
+
+
+    /*
+        Obtener jugador actual.
+    */
+
+    const jugadorEliminado =
+        dicePlayers[
+            diceCurrentIndex
+        ];
+
+
+    /*
+        Eliminar jugador actual.
+    */
+
+    dicePlayers.splice(
+        diceCurrentIndex,
+        1
+    );
+
+
+    /*
+        Si ya no quedan jugadores.
+    */
+
+    if (
+        dicePlayers.length === 0
+    ) {
+
+        diceCurrentIndex = 0;
+
+        diceHasRolled = false;
+
+        diceRoundResult.textContent =
+            "Lanza los dados";
+
+        diceMessage.textContent =
+            `${jugadorEliminado.name} fue eliminado. Agrega un jugador para comenzar.`;
+
+        actualizarJugadorActual();
+
+        actualizarRanking();
+
+        return;
+    }
+
+
+    /*
+        Si eliminamos al último jugador
+        de la lista, volver al primero.
+    */
+
+    if (
+        diceCurrentIndex >=
+        dicePlayers.length
+    ) {
+
+        diceCurrentIndex = 0;
+    }
+
+
+    /*
+        Reiniciar turno.
+    */
+
+    diceHasRolled = false;
+
+
+    diceRoundResult.textContent =
+        "Lanza los dados";
+
+
+    diceMessage.textContent =
+        `${jugadorEliminado.name} fue eliminado.`;
+
+
+    actualizarJugadorActual();
+
+    actualizarRanking();
+}
     /* =====================================================
        NUEVA PARTIDA
     ===================================================== */
@@ -2225,7 +2348,7 @@ if (diceGame) {
 
 
         diceMessage.textContent =
-            "¡Nueva partida! Empieza HANSSY ROY.";
+            "¡Nueva partida! Agrega un jugador para comenzar.by HANSSY ROY ";
 
 
         actualizarJugadorActual();
@@ -2253,6 +2376,11 @@ if (diceGame) {
     diceAddPlayer.addEventListener(
         "click",
         agregarJugador
+    );
+    
+    diceRemovePlayer.addEventListener(
+    "click",
+    eliminarJugador
     );
 
 
